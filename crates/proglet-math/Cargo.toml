@@ -1,0 +1,8 @@
+[package]
+name = "proglet-math"
+version = "0.1.0"
+description = "Pure x*y=k swap, fee and oracle math shared by the on-chain program, bots and tests"
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]

@@ -1,0 +1,20 @@
+# Build output
+target/
+.anchor/
+test-ledger/
+**/*.rs.bk
+
+# Secrets: never commit
+.env
+.env.*
+*.keypair.json
+keys/
+
+# Not part of this repository (published separately)
+sdk/
+surfpool-tests/
+scripts/surfpool.sh
+node_modules/
+.surfpool/
+.yarn/
+.DS_Store

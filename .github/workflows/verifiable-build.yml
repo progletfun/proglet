@@ -1,0 +1,40 @@
+name: Verifiable build
+
+# Builds proglet.so reproducibly (solana-verify, digest-pinned Docker image) on
+# an x86 runner. Deploy only the artifact this produces; its hash is what
+# `solana-verify verify-from-repo` checks against the chain.
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install solana-verify
+        run: cargo install solana-verify --version 0.5.2 --locked
+
+      - name: Build
+        run: scripts/verify-build.sh | tee build.log
+
+      - name: Hash
+        run: |
+          sha256sum target/deploy/proglet.so | tee proglet.so.sha256
+          solana-verify get-executable-hash target/deploy/proglet.so | tee proglet.so.executable-hash
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: proglet-${{ github.sha }}
+          path: |
+            target/deploy/proglet.so
+            proglet.so.sha256
+            proglet.so.executable-hash
+            build.log
+          if-no-files-found: error

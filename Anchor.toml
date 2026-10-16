@@ -1,0 +1,19 @@
+[toolchain]
+anchor_version = "1.2.1"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+proglet = "PRGKG2z95rbzHWU5EnhQAMFx7V4m94VqziiNeqHiRgE"
+
+[programs.mainnet]
+proglet = "PRGKG2z95rbzHWU5EnhQAMFx7V4m94VqziiNeqHiRgE"
+
+[provider]
+cluster = "localnet"
+wallet = "../keys/deployer.json"
+
+[scripts]
+test = "cargo test"
