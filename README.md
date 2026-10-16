@@ -7,7 +7,7 @@ Proglet is a Solana program that launches coins on [pump.fun](https://pump.fun) 
 | | |
 | --- | --- |
 | Program ID | `PRGKG2z95rbzHWU5EnhQAMFx7V4m94VqziiNeqHiRgE` |
-| Status | Not deployed to mainnet yet |
+| Status | Live on mainnet · [verified build](https://verify.osec.io/status/PRGKG2z95rbzHWU5EnhQAMFx7V4m94VqziiNeqHiRgE) |
 | Framework | Anchor 1.2.1, Rust 1.89.0 |
 | Website | [proglet.fun](https://proglet.fun) · [docs](https://proglet.fun/docs) |
 | SDK | [`@proglet/sdk`](https://www.npmjs.com/package/@proglet/sdk) |
@@ -109,7 +109,7 @@ scripts/verify-build.sh         # solana-verify build in a digest-pinned Docker 
 
 The `Verifiable build` GitHub Action runs the same script on an x86 runner. It publishes `proglet.so` and its hash as an artifact.
 
-To check the program on chain against this repository:
+The mainnet program is verified by OtterSec against commit `90a55d4` ([status](https://verify.osec.io/status/PRGKG2z95rbzHWU5EnhQAMFx7V4m94VqziiNeqHiRgE)); its executable hash is `6c6b2cc6fb7bf8419c6327f4fa232d683bd72711e7ac305a35c0eaf768fb6923`. To check it yourself:
 
 ```sh
 solana-verify verify-from-repo \
